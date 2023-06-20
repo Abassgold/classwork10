@@ -26,6 +26,10 @@ function addItems(){
 }
 function deleteItems(Delete){
     itemsArr.splice(Delete);
+    document.getElementById("Success").style.display = "none"
+    document.getElementById("UpdateSuccesful").style.display = "none"
+    document.getElementById("UpdateUnsuccesful").style.display = "none"
+    document.getElementById("FillUpSpace").style.display = "none"
     showItems();
 }
 function editItems(edit){
