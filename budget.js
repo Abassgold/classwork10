@@ -1,6 +1,6 @@
 var itemsArr = [];
 
-function addItems(){
+function addItem(){
     var Items = {
         itemList: item.value,
         priceList: price.value
