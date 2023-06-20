@@ -43,7 +43,7 @@ rel="stylesheet"
           <div id="FillUpSpace" class="alert alert-danger text-center" style="display: none;">Fill up the empty spaces</div>
           <div class="alert alert-danger text-center" id="itemsAdded">Add Items</div>
     </div><br>
-    <table id="show" class="table table-striped"></table>
+    <table id="show" class="table table-striped table-bordered"></table>
 
 
     <script>
@@ -73,7 +73,7 @@ function addItem(){
     }
 }
 function deleteItems(Delete){
-    itemsArr.splice(Delete);
+    itemsArr.splice(Delete, 1);
     document.getElementById("Success").style.display = "none"
     document.getElementById("UpdateSuccesful").style.display = "none"
     document.getElementById("UpdateUnsuccesful").style.display = "none"
@@ -114,7 +114,7 @@ function showItems(){
     <th>Action</th>
     </tr>`
     for(i=0; i < itemsArr.length; i++){
-        show.innerHTML += `
+    show.innerHTML += `
     <tr>
     <td>${1+i}</td>
     <td>${itemsArr[i].itemList}</td>
@@ -129,4 +129,4 @@ function showItems(){
 }
     </script>
 </body>
-</html>
+</html> 
