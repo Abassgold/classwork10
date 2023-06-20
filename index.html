@@ -56,6 +56,7 @@ function addItem(){
     }
     if(item.value && price.value){
         itemsArr.push(Items);
+        showItems();
         document.getElementById("Success").style.display = "block"
         document.getElementById("UpdateSuccesful").style.display = "none"
         document.getElementById("UpdateUnsuccesful").style.display = "none"
@@ -70,7 +71,6 @@ function addItem(){
         document.getElementById("UpdateUnsuccesful").style.display = "none"
         document.getElementById("FillUpSpace").style.display = "block"
     }
-    showItems();
 }
 function deleteItems(Delete){
     itemsArr.splice(Delete);
@@ -118,7 +118,7 @@ function showItems(){
     <tr>
     <td>${1+i}</td>
     <td>${itemsArr[i].itemList}</td>
-    <td>$ ${itemsArr[i].priceList}</td>
+    <td>$${itemsArr[i].priceList}</td>
     <td>
     <button onclick="editItems(${i})">Edit</button>
     <button onclick="deleteItems(${i})">Delete</button>
