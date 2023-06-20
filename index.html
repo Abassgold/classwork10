@@ -28,16 +28,19 @@ rel="stylesheet"
 <body>
     <div class="container">
         <h1 class="text-center mb-2">Budget Application</h1>
-        <div class="form-outline mt-5">
-            <input type="text" id="item" class="form-control mb-3" />
+        <div id="Success" class="alert alert-success text-center py-2 mb-1" style="display: none ;">Items added succesfully</div>
+        <div id="UpdateSuccesful" class="alert alert-success text-center py-2 mb-1" style="display: none;">Items updated succesfully</div>
+        <div class="form-outline mt-2">
+            <input type="text" id="item" class="form-control mb-2 py-2" />
             <label class="form-label" for="form12">Add Items</label>
           </div>
           <div class="form-outline">
-            <input type="number" id="price" class="form-control" />
+            <input type="number" id="price" class="form-control py-2 mb-2" />
             <label class="form-label" for="form12">Add Price</label>
           </div>
-          <button class="btn btn-dark w-100" onclick="addItems()" id="addItems">Add Items</button>
-          <div class="alert alert-danger text-center" style="display: none;">No Items is added</div>
+          <button class="btn btn-dark w-100 mb-2" onclick="addItems()" id="addItems">Add Items</button>
+        <div id="UpdateUnsuccesful" class="alert alert-danger text-center py-2 mb-2" style="display: none;">Items are not updated succesfully</div>
+          <div id="FillUpSpace" class="alert alert-danger text-center" style="display: none;">Fill up the empty spaces</div>
           <div class="alert alert-danger text-center" id="itemsAdded">Add Items</div>
     </div><br>
     <table id="show" class="table table-striped"></table>

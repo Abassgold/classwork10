@@ -7,15 +7,20 @@ function addItems(){
     }
     if(item.value && price.value){
         itemsArr.push(Items);
+        document.getElementById("Success").style.display = "block"
+        document.getElementById("UpdateSuccesful").style.display = "none"
+        document.getElementById("UpdateUnsuccesful").style.display = "none"
+        document.getElementById("FillUpSpace").style.display = "none"
         item.value = ''
         price.value = ''
-    console.log("its work");
+        console.log("its work");
 
     }
     else{
-
-        alert("add items")
-      //  document.getElementById("addItems").style.display = "block"
+        document.getElementById("Success").style.display = "none"
+        document.getElementById("UpdateSuccesful").style.display = "none"
+        document.getElementById("UpdateUnsuccesful").style.display = "none"
+        document.getElementById("FillUpSpace").style.display = "block"
     }
     showItems();
 }
@@ -29,16 +34,21 @@ function editItems(edit){
         priceList: price.value
     }
     if(item.value && price.value){
-    itemsArr.splice(edit, 1, Items)
+    itemsArr.splice(edit, 1, Items);
+    document.getElementById("Success").style.display = "none"
+    document.getElementById("UpdateSuccesful").style.display = "block"
+    document.getElementById("UpdateUnsuccesful").style.display = "none"
+    document.getElementById("FillUpSpace").style.display = "none"
         item.value = ''
         price.value = ''
     console.log("its work");
 
     }
     else{
-
-        alert("add items")
-      //  document.getElementById("addItems").style.display = "block"
+        document.getElementById("Success").style.display = "none"
+        document.getElementById("UpdateSuccesful").style.display = "none"
+        document.getElementById("UpdateUnsuccesful").style.display = "block"
+        document.getElementById("FillUpSpace").style.display = "none"
     }
     showItems();
 }
