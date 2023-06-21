@@ -32,19 +32,22 @@ rel="stylesheet"
         <div id="UpdateSuccesful" class="alert alert-success text-center py-2 mb-1" style="display: none;">Items updated succesfully</div>
         <div class="form-outline mt-2">
             <input type="text" id="item" class="form-control mb-2 py-2" />
-            <label class="form-label" for="form12">Add Items</label>
+            <label class="form-label" for="items">Add Items</label>
           </div>
           <div class="form-outline">
             <input type="number" id="price" class="form-control py-2 mb-2" />
-            <label class="form-label" for="form12">Add Price</label>
+            <label class="form-label" for="price">Add Price</label>
+          </div>
+          <div class="form-outline">
+            <input type="number" id="Quantity" class="form-control py-2 mb-2" />
+            <label class="form-label" for="Quantity">Add Quantity</label>
           </div>
           <button class="btn btn-dark w-100 mb-2" onclick="addItem()">Add Items</button>
         <div id="UpdateUnsuccesful" class="alert alert-danger text-center py-2 mb-2" style="display: none;">Items are not updated succesfully</div>
           <div id="FillUpSpace" class="alert alert-danger text-center" style="display: none;">Fill up the empty spaces</div>
           <div class="alert alert-danger text-center" id="itemsAdded">Add Items</div>
-    </div><br>
-    <table id="show" class="table table-striped table-bordered"></table>
-
+    <table id="show" class="table table-striped table-bordered mt-4"></table>
+    </div>
 
     <script>
         var itemsArr = [];
@@ -52,9 +55,10 @@ rel="stylesheet"
 function addItem(){
     var Items = {
         itemList: item.value,
-        priceList: price.value
+        priceList: price.value,
+        quantityList: Quantity.value
     }
-    if(item.value && price.value){
+    if(item.value && price.value && Quantity.value){
         itemsArr.push(Items);
         showItems();
         document.getElementById("Success").style.display = "block"
@@ -63,7 +67,7 @@ function addItem(){
         document.getElementById("FillUpSpace").style.display = "none"
         item.value = ''
         price.value = ''
-
+        Quantity.value = ''
     }
     else{
         document.getElementById("Success").style.display = "none"
@@ -83,9 +87,10 @@ function deleteItems(Delete){
 function editItems(edit){
     var Items = {
         itemList: item.value,
-        priceList: price.value
+        priceList: price.value,
+        quantityList: Quantity.value
     }
-    if(item.value && price.value){
+    if(item.value && price.value && Quantity.value){
     itemsArr.splice(edit, 1, Items);
     document.getElementById("Success").style.display = "none"
     document.getElementById("UpdateSuccesful").style.display = "block"
@@ -93,8 +98,7 @@ function editItems(edit){
     document.getElementById("FillUpSpace").style.display = "none"
         item.value = ''
         price.value = ''
-    console.log("its work");
-
+        Quantity.value = ''
     }
     else{
         document.getElementById("Success").style.display = "none"
@@ -104,6 +108,31 @@ function editItems(edit){
     }
     showItems();
 }
+       function editModal(editt){
+        var Items = {
+            itemList: EditItem.value,
+            priceList: EditPrice.value
+        }
+        if(EditItem.value && EditPrice.value){
+            itemsArr.splice(editt, 1, Items);
+            document.getElementById("Success").style.display = "none"
+            document.getElementById("UpdateSuccesful").style.display = "block"
+            document.getElementById("UpdateUnsuccesful").style.display = "none"
+            document.getElementById("FillUpSpace").style.display = "none"
+                item.value = ''
+                price.value = ''
+            console.log("its work");
+        
+            }
+            else{
+                document.getElementById("Success").style.display = "none"
+                document.getElementById("UpdateSuccesful").style.display = "none"
+                document.getElementById("UpdateUnsuccesful").style.display = "block"
+                document.getElementById("FillUpSpace").style.display = "none"
+            }
+            showItems();
+}
+        
 function showItems(){
     show.innerHTML = ""
     show.innerHTML = `
@@ -111,6 +140,8 @@ function showItems(){
     <th>S/N</th>
     <th>Items</th>
     <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
     <th>Action</th>
     </tr>`
     for(i=0; i < itemsArr.length; i++){
@@ -119,9 +150,12 @@ function showItems(){
     <td>${1+i}</td>
     <td>${itemsArr[i].itemList}</td>
     <td>$${itemsArr[i].priceList}</td>
+    <td>${itemsArr[i].quantityList}</td>
+    <td>$${itemsArr[i].priceList * itemsArr[i].quantityList}</td>
     <td>
     <button onclick="editItems(${i})">Edit</button>
     <button onclick="deleteItems(${i})">Delete</button>
+    <button onclick="editModal(${i})">Deleteone</button>
     </td>
     </tr>`
     }
